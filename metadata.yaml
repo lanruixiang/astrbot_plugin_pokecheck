@@ -1,6 +1,6 @@
 name: pokecheck # 这是你的插件的唯一识别名。
 desc: 一个检测“戳”关键词的插件 # 插件简短描述
-help: 发送“戳”即可 # 插件的帮助信息
-version: v1.0 # 插件版本号。格式：v1.1.1 或者 v1.1
+help: 发送“戳”即可，不可包含at信息 # 插件的帮助信息
+version: v1.1 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: huanyan434 # 作者
 repo: https://github.com/huanyan434/astrbot_plugin_pokecheck # 插件的仓库地址
