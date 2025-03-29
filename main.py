@@ -2,9 +2,9 @@ from astrbot.api.all import *
 from astrbot.api.star import Context, Star, register
 from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.event.filter import event_message_type, EventMessageType
+import astrbot.api.message_components as Comp
 
-
-@register("戳！", "huanyan434", "一个检测“戳”关键词的插件", "1.0", "https://github.com/huanyan434/astrbot_plugin_pokecheck")
+@register("戳！", "huanyan434", "一个检测“戳”关键词的插件", "1.1", "https://github.com/huanyan434/astrbot_plugin_pokecheck")
 class PokeCheckPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -15,6 +15,12 @@ class PokeCheckPlugin(Star):
         raw_message = msg_obj.raw_message
         text = msg_obj.message_str or ""
         if "戳" in text:
+            messages = event.get_messages()
+            target_user_id = next((str(seg.qq) for seg in messages if (isinstance(seg, Comp.At))), None)
+
+            # 检查是否有 @ 的用户
+            if target_user_id is not None:
+                return
             # 发送戳一戳
             if event.get_platform_name() == "aiocqhttp":
                 from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
