@@ -16,7 +16,7 @@ class PokeCheckPlugin(Star):
         msg_obj = event.message_obj
         raw_message = msg_obj.raw_message
         text = msg_obj.message_str or ""
-        if "戳" in text:
+        if "Poke:poke" in text:
             messages = event.get_messages()
             target_user_id = next((str(seg.qq) for seg in messages if (isinstance(seg, Comp.At))), None)
 
