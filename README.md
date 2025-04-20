@@ -1,3 +1,5 @@
+Forked from <https://github.com/huanyan434/astrbot_plugin_pokecheck>
+
 # astrbot_plugin_pokecheck
 ## 简介
 当用户发送的消息中包含关键词“戳”时，机器人会自动回戳。
