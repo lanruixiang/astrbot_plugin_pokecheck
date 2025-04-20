@@ -4,6 +4,8 @@ from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.event.filter import event_message_type, EventMessageType
 import astrbot.api.message_components as Comp
 
+textlist = ["你干嘛~哎呦", "就你小子乱戳我，找打！", "你再戳！吃我一脚！", "戳扁了啦！", "又戳我！你完了", "哎呀，好舒服", "你干嘛！"]
+
 @register("戳！", "huanyan434", "一个检测“戳”关键词的插件", "1.1", "https://github.com/huanyan434/astrbot_plugin_pokecheck")
 class PokeCheckPlugin(Star):
     def __init__(self, context: Context):
@@ -23,6 +25,8 @@ class PokeCheckPlugin(Star):
                 return
             # 发送戳一戳
             if event.get_platform_name() == "aiocqhttp":
+                import random
+                yield event.plain_result(textlist[random.randint(0, len(textlist) - 1)]) # 发送随机的文本
                 from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
                 assert isinstance(event, AiocqhttpMessageEvent)
                 client = event.bot
